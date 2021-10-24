@@ -10,11 +10,14 @@ def main():
     for title in df['titles']:
         new_title = re.sub(r'【.+】', '', title)
         new_title = neologdn.normalize(new_title)
+        # 終了トークンを追加
+        new_title = new_title + '<|endoftext|>'
         treated_titles.append(new_title)
 
-    df['treated_titles'] = treated_titles
+    dataset = "\n".join(treated_titles)
 
-    df.to_csv('datasets.csv', index=False)
+    with open('dataset.txt', 'w') as f:
+        f.write(dataset)
 
 if __name__=='__main__':
     main()
