@@ -25,7 +25,7 @@ def get_title_txt(driver):
     titles = []
 
     for e in titles_elements:
-        time.sleep(1)
+        time.sleep(400/1000)
         title = e.get_attribute("alt")
         titles.append(title)
 
@@ -52,10 +52,10 @@ def main():
     titles = []
 
     # 最大10ページまでとする
-    for page in tqdm.tqdm(range(1, 11)):
+    for page in tqdm.tqdm(range(1, 51)):
         url = url +'page='+str(page)+'/'
         driver.get(url)
-        time.sleep(5)
+        time.sleep(1)
         titles.extend(get_title_txt(driver))
 
     df = pd.DataFrame({'titles':titles})

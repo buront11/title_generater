@@ -9,7 +9,7 @@ def main():
     treated_titles = []
     for title in df['titles']:
         new_title = re.sub(r'【.+】', '', title)
-        new_title = neologdn.normalize(new_title)
+        # new_title = neologdn.normalize(new_title)
         # 終了トークンを追加
         new_title = new_title + '<|endoftext|>'
         treated_titles.append(new_title)
